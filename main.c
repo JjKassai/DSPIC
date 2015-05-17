@@ -6,7 +6,8 @@
  */
 #define FCY 33333333
 #define increment 10
-#define ADCGAIN 100
+#define ADCGAIN 50 
+#define OFFSET 0x0000
 
 unsigned int i=0;
 
@@ -76,11 +77,18 @@ int main(int argc, char** argv) {
         //AD1CON1bits.DONE=0;
         //DAC1LDAT=ADC1BUF0*5;
         
-        DAC1LDAT=ADC1BUF0*ADCGAIN+10;
         
+        
+        DAC1RDAT=ADC1BUF0*ADCGAIN+OFFSET;
+        
+        //LATBbits.LATB3=1;
         
         //__delay32(5);
-/*       for(i=0;i<0xFFFF-increment;i+=increment)
+        //LATBbits.LATB3=0;
+        //__delay32(5);
+        
+        
+        /*  for(i=0;i<0xFFFF-increment;i+=increment)
         {
             DAC1LDAT=i;
         }
@@ -92,7 +100,7 @@ int main(int argc, char** argv) {
         {
             DAC1LDAT=i;
         }
-*/      //DAC1LDAT = ADC1BUF0;
+    */  //DAC1LDAT = ADC1BUF0;
         //__delay_us(10);
         //DAC1RDAT = rand();
     

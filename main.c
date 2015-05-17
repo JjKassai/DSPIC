@@ -6,7 +6,7 @@
  */
 #define FCY 33333333
 #define increment 10
-#define ADCGAIN 20 
+#define ADCGAIN 15 
 #define OFFSET 0x0000
 
 //Dummy counter variable
@@ -38,8 +38,8 @@ unsigned int i=0;
 #pragma config GSS = OFF                // General Segment Code Protection (User program memory is not code-protected)
 
 // FOSCSEL
-#pragma config FNOSC = PRIPLL              // Oscillator Mode (Primary Oscillator (XT, HS, EC))
-#pragma config IESO = ON               // Internal External Switch Over Mode (Start-up device with user-selected oscillator source)
+#pragma config FNOSC = PRIPLL           // Oscillator Mode (Primary Oscillator (XT, HS, EC))
+#pragma config IESO = ON                // Internal External Switch Over Mode (Start-up device with user-selected oscillator source)
 
 // FOSC
 #pragma config POSCMD = HS              // Primary Oscillator Source (HS Oscillator Mode)
@@ -73,13 +73,23 @@ int main(int argc, char** argv) {
         
         DAC1RDAT=ADC1BUF0*ADCGAIN+OFFSET;
         
-        //Blinking LED Debug code on port RB3
-        //LATBbits.LATB3=1;
-        //__delay32(5);
-        //LATBbits.LATB3=0;
-        //__delay32(5);
+        //DAC1RDAT=ADC1BUF0*ADCGAIN*rand();
         
-        //Sawtooth generator to test the DAC
+        //Code to measure Fcy
+    /*  LATBbits.LATB3=1;
+        LATBbits.LATB3=0;
+        LATBbits.LATB3=1;
+        LATBbits.LATB3=0;
+        LATBbits.LATB3=1;
+        LATBbits.LATB3=0;
+        LATBbits.LATB3=1;
+        LATBbits.LATB3=0;
+        LATBbits.LATB3=1;
+        LATBbits.LATB3=0;
+        LATBbits.LATB3=1;
+        LATBbits.LATB3=0;
+        __delay32(25);
+   */   //Sawtooth generator to test the DAC
         /*  for(i=0;i<0xFFFF-increment;i+=increment)
         {
             DAC1LDAT=i;
@@ -104,7 +114,7 @@ void setup(void)
 {
     //OSCILLATOR SETUP
     //OSCCON=0b0011001100000000;
-    OSCCONbits.NOSC=0b011;      //Primary oscillator with PLL
+    OSCCONbits.NOSC=0b011;           //Primary oscillator with PLL
 
     //AUX OSCILLATOR SETUP
     //ACLKCON=0b0010111100000000;
@@ -126,16 +136,16 @@ void setup(void)
     //DAC1RDAT=0xFFFF;
     
     //ADC SETUP
-    AD1CON1bits.ADON=1;         //Turn on
-    AD1CON1bits.AD12B=0;        //10 bit 4 channels
-    AD1CON1bits.SSRC=0b111;     //Auto-convert
-    AD1CON1bits.ASAM=1;         //Auto Sample
-    AD1CON3bits.ADRC=1;         //Try the RC clock
-    AD1CON3bits.SAMC=0b11111;   //Auto Sample Time = 31 TAD
-    AD1CHS0bits.CH0SB=0b00000;  //Channel 0 pos input is AN0
-    AD1CHS0bits.CH0SA=0b00000;  //Channel 0 pos input sample b is AN0
+    AD1CON1bits.ADON=1;             //Turn on
+    AD1CON1bits.AD12B=0;            //10 bit 4 channels
+    AD1CON1bits.SSRC=0b111;         //Auto-convert
+    AD1CON1bits.ASAM=1;             //Auto Sample
+    AD1CON3bits.ADRC=1;             //Try the RC clock
+    AD1CON3bits.SAMC=0b11111;       //Auto Sample Time = 31 TAD
+    AD1CHS0bits.CH0SB=0b00000;      //Channel 0 pos input is AN0
+    AD1CHS0bits.CH0SA=0b00000;      //Channel 0 pos input sample b is AN0
     
     //PORT SETUP
-    TRISA=0x0001;           //RA0 is an analog input from the mic
+    TRISA=0x0001;                   //RA0 is an analog input from the mic
     TRISB=0x0000;
 }

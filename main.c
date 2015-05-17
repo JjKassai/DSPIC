@@ -1,14 +1,15 @@
 /* 
  * File:   main.c
- * Author: root
+ * Author: Joe Kassai
  *
  * Created on April 13, 2015, 7:20 PM
  */
 #define FCY 33333333
 #define increment 10
-#define ADCGAIN 60 
+#define ADCGAIN 20 
 #define OFFSET 0x0000
 
+//Dummy counter variable
 unsigned int i=0;
 
 #include <stdio.h>
@@ -67,27 +68,18 @@ int main(int argc, char** argv) {
     setup();
     while(1)
     {
-        //PORTA=0xFFFF;
-        //LATBbits.LATB2=AD1CON1bits.DONE;
-        //LATBbits.LATB3=AD1CON1bits.SAMP;
-        //LATBbits.LATB3=1;
-        //LATBbits.LATB3=0;
-        
-        
         //AD1CON1bits.DONE=0;
         //DAC1LDAT=ADC1BUF0*5;
         
-        
-        
         DAC1RDAT=ADC1BUF0*ADCGAIN+OFFSET;
         
+        //Blinking LED Debug code on port RB3
         //LATBbits.LATB3=1;
-        
         //__delay32(5);
         //LATBbits.LATB3=0;
         //__delay32(5);
         
-        
+        //Sawtooth generator to test the DAC
         /*  for(i=0;i<0xFFFF-increment;i+=increment)
         {
             DAC1LDAT=i;
@@ -111,19 +103,27 @@ int main(int argc, char** argv) {
 void setup(void)
 {
     //OSCILLATOR SETUP
-    OSCCON=0b0011001100000000;
-    //CLKDIV=0b0000000000000001;
-    //PLLFBD=0x0000;
-    
+    //OSCCON=0b0011001100000000;
+    OSCCONbits.NOSC=0b011;      //Primary oscillator with PLL
+
     //AUX OSCILLATOR SETUP
-    ACLKCON=0b0010111100000000;
+    //ACLKCON=0b0010111100000000;
+    ACLKCONbits.SELACLK=1;          //Aux oscillator provides clock to aux clock divider (?)
+    ACLKCONbits.AOSCMD=0b01;        //HS Oscillator select
+    ACLKCONbits.APSTSCLR=0b111;     //Divide by 1
     
     //DAC SETUP
-    DAC1CON=0b1001000000000000;
-    DAC1STAT=0b1000000010000000;
-    DAC1DFLT=0x0000;
-    DAC1LDAT=0xFFFF;
-    DAC1RDAT=0xFFFF;
+    //DAC1CON=0b1001000000000000;
+    DAC1CONbits.DACEN=1;            //Enable the DAC
+    
+    //DAC1STAT=0b1000000010000000;
+    DAC1STATbits.LOEN=1;            //Left channel output enable
+    DAC1STATbits.ROEN=1;            //Right channel output enable
+        
+    DAC1DFLT=0x0000;                //Default data register loaded to zero
+    
+    //DAC1LDAT=0xFFFF;
+    //DAC1RDAT=0xFFFF;
     
     //ADC SETUP
     AD1CON1bits.ADON=1;         //Turn on

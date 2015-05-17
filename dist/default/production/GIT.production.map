@@ -72,10 +72,10 @@ Program Memory  [Origin = 0x200, Length = 0x15600]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0x9e            0xed  (237)
-.text                        0x29e                0x68            0x9c  (156)
-.dinit                       0x306                 0x8             0xc  (12)
+.text                        0x29e                0x72            0xab  (171)
+.dinit                       0x310                 0x8             0xc  (12)
 
-                     Total program memory used (bytes):          0x195  (405) <1%
+                     Total program memory used (bytes):          0x1a4  (420) <1%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
@@ -113,7 +113,7 @@ External Symbols in Program Memory (by address):
                   0x00023c                  __data_init
                   0x00029a                  __DefaultInterrupt
                   0x00029e                  _main
-                  0x0002b2                  _setup
+                  0x0002b0                  _setup
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
@@ -129,7 +129,7 @@ External Symbols in Program Memory (by name):
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
                   0x00029e                  _main
-                  0x0002b2                  _setup
+                  0x0002b0                  _setup
 
 Memory Configuration
 
@@ -255,26 +255,26 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x781
+.debug_info       0x000000        0xc5e
  *(.debug_info)
- .debug_info      0x000000        0x781 build/default/production/main.o
+ .debug_info      0x000000        0xc5e build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000         0xfa
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xfa build/default/production/main.o
 
-.debug_line       0x000000        0x15a
+.debug_line       0x000000        0x162
  *(.debug_line)
- .debug_line      0x000000        0x15a build/default/production/main.o
+ .debug_line      0x000000        0x162 build/default/production/main.o
 
 .debug_frame      0x000000         0x34
  *(.debug_frame)
  .debug_frame     0x000000         0x34 build/default/production/main.o
 
-.debug_str        0x000000         0x51
+.debug_str        0x000000         0x6f
  *(.debug_str)
- .debug_str       0x000000         0x51 build/default/production/main.o
+ .debug_str       0x000000         0x6f build/default/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -1529,18 +1529,18 @@ LOAD default_isr
 LOAD data_init
 
 .debug_pubtypes
-                  0x000018         0x7b
+                  0x000018        0x107
  .debug_pubtypes
-                  0x000018         0x7b build/default/production/main.o
+                  0x000018        0x107 build/default/production/main.o
 
 __c30_signature
-                  0x000093         0x12
+                  0x00011f         0x12
  __c30_signature
-                  0x000093          0x6 build/default/production/main.o
+                  0x00011f          0x6 build/default/production/main.o
  __c30_signature
-                  0x000099          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                  0x000125          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x00009f          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                  0x00012b          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
 
 .nbss               0x0800          0x2
  .nbss              0x0800          0x2 build/default/production/main.o
@@ -1564,10 +1564,10 @@ __c30_signature
 .config_IESO      0xf80006          0x2
  .config_IESO     0xf80006          0x2 build/default/production/main.o
 
-.text             0x00029e         0x68
- .text            0x00029e         0x68 build/default/production/main.o
+.text             0x00029e         0x72
+ .text            0x00029e         0x72 build/default/production/main.o
                   0x00029e                  _main
-                  0x0002b2                  _setup
+                  0x0002b0                  _setup
 
-.dinit            0x000306          0x8
- .dinit           0x000306          0x8 data_init
+.dinit            0x000310          0x8
+ .dinit           0x000310          0x8 data_init

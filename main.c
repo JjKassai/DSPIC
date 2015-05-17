@@ -6,7 +6,7 @@
  */
 #define FCY 33333333
 #define increment 10
-#define ADCGAIN 50 
+#define ADCGAIN 60 
 #define OFFSET 0x0000
 
 unsigned int i=0;

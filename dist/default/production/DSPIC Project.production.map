@@ -72,19 +72,19 @@ Program Memory  [Origin = 0x200, Length = 0x15600]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0x9e            0xed  (237)
-.text                        0x29e                0x72            0xab  (171)
-.dinit                       0x310                 0x8             0xc  (12)
+.text                        0x29e                0xa2            0xf3  (243)
+.dinit                       0x340                 0x8             0xc  (12)
 
-                     Total program memory used (bytes):          0x1a4  (420) <1%
+                     Total program memory used (bytes):          0x1ec  (492) <1%
 
 
 Data Memory  [Origin = 0x800, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0             0x2  (2)
+.nbss                        0x800                   0           0xfa6  (4006)
 
-                        Total data memory used (bytes):            0x2  (2) <1%
+                        Total data memory used (bytes):          0xfa6  (4006) 24%
 
 
 Dynamic Memory Usage
@@ -92,18 +92,24 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                        0x802                              0x3ffe  (16382)
+stack                       0x17a6                              0x305a  (12378)
 
-                        Maximum dynamic memory (bytes):         0x3ffe  (16382)
+                        Maximum dynamic memory (bytes):         0x305a  (12378)
 
 
 External Symbols in Data Memory (by address):
 
                     0x0800                  _i
+                    0x0802                  _input
+                    0x17a2                  _min_in
+                    0x17a4                  _max_in
 
 External Symbols in Data Memory (by name):
 
                     0x0800                  _i
+                    0x0802                  _input
+                    0x17a4                  _max_in
+                    0x17a2                  _min_in
 
 External Symbols in Program Memory (by address):
 
@@ -113,7 +119,7 @@ External Symbols in Program Memory (by address):
                   0x00023c                  __data_init_standard
                   0x00029a                  __DefaultInterrupt
                   0x00029e                  _main
-                  0x0002b0                  _setup
+                  0x0002d8                  _setup
                   0xf80000                  __FBS.sec
                   0xf80002                  __FSS.sec
                   0xf80004                  __FGS.sec
@@ -129,7 +135,7 @@ External Symbols in Program Memory (by name):
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
                   0x00029e                  _main
-                  0x0002b0                  _setup
+                  0x0002d8                  _setup
 
 Memory Configuration
 
@@ -255,18 +261,18 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xc65
+.debug_info       0x000000        0xcf8
  *(.debug_info)
- .debug_info      0x000000        0xc65 build/default/production/main.o
+ .debug_info      0x000000        0xcf8 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000         0xfa
+.debug_abbrev     0x000000        0x133
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xfa build/default/production/main.o
+ .debug_abbrev    0x000000        0x133 build/default/production/main.o
 
-.debug_line       0x000000        0x150
+.debug_line       0x000000        0x170
  *(.debug_line)
- .debug_line      0x000000        0x150 build/default/production/main.o
+ .debug_line      0x000000        0x170 build/default/production/main.o
 
 .debug_frame      0x000000         0x34
  *(.debug_frame)
@@ -283,10 +289,10 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000         0x2b
+                  0x000000         0x4b
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x2b build/default/production/main.o
+                  0x000000         0x4b build/default/production/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -1542,9 +1548,12 @@ __c30_signature
  __c30_signature
                   0x00012b          0x6 /opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(data_init_standard.o)
 
-.nbss               0x0800          0x2
- .nbss              0x0800          0x2 build/default/production/main.o
+.nbss               0x0800        0xfa6
+ .nbss              0x0800        0xfa6 build/default/production/main.o
                     0x0800                  _i
+                    0x0802                  _input
+                    0x17a2                  _min_in
+                    0x17a4                  _max_in
 
 .config_JTAGEN    0xf8000e          0x2
  .config_JTAGEN
@@ -1564,10 +1573,10 @@ __c30_signature
 .config_IESO      0xf80006          0x2
  .config_IESO     0xf80006          0x2 build/default/production/main.o
 
-.text             0x00029e         0x72
- .text            0x00029e         0x72 build/default/production/main.o
+.text             0x00029e         0xa2
+ .text            0x00029e         0xa2 build/default/production/main.o
                   0x00029e                  _main
-                  0x0002b0                  _setup
+                  0x0002d8                  _setup
 
-.dinit            0x000310          0x8
- .dinit           0x000310          0x8 data_init
+.dinit            0x000340          0x8
+ .dinit           0x000340          0x8 data_init

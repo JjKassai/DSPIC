@@ -4,28 +4,45 @@
  *
  * Created on April 13, 2015, 7:20 PM
  */
-#define FCY 33333333
-#define increment 10
-#define ADCGAIN 15 
-#define OFFSET 0x0000
 
-//Dummy counter variable
-unsigned int i=0;
-
+//INCLUDE FILES
 #include <stdio.h>
 #include <stdlib.h>
 #include <libpic30.h>
 #include <math.h>
 #include "config_bits.h"
 #include "misc.h"
+#include "diagnostics.h"
 
+//CONSTANT DECLARATION
+#define FCY 33333333
+#define increment 10
+#define ADCGAIN 20 
+#define OFFSET 0x0000
+#define SAMPLE_SIZE 2000
+#define MAX_ADC 2^10
+#define MAX_DAC 2^12
+
+static const unsigned int lookup[] = 
+{};
+
+//VARIABLE DECLARATION
+unsigned int i=0;
+unsigned int input[SAMPLE_SIZE];
+unsigned int min_in, max_in;
+
+//PROTOTYPES
 void setup(void);
 
 int main(int argc, char** argv) {
     setup();
     while(1)
     {
-        DAC1RDAT=ADC1BUF0*ADCGAIN+OFFSET;
+        for(i=0;i<2000;i++)
+        {
+            input[i]=ADC1BUF0*ADCGAIN;
+            DAC1RDAT=input[i];
+        }
     }
     return (EXIT_SUCCESS);
 }
@@ -58,6 +75,7 @@ void setup(void)
     //ADC SETUP
     AD1CON1bits.ADON=1;             //Turn on
     AD1CON1bits.AD12B=0;            //10 bit 4 channels
+    AD1CON1bits.FORM=0b00;          //Unsigned Integer ouput format
     AD1CON1bits.SSRC=0b111;         //Auto-convert
     AD1CON1bits.ASAM=1;             //Auto Sample
     AD1CON3bits.ADRC=1;             //Try the RC clock

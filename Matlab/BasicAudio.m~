@@ -1,0 +1,22 @@
+
+DEFAULT_SAMPLE_RATE = 8000
+DEFAULT_DATA_SIZE = 8
+DEFAULT_RECORD_LENGTH = 5
+
+recobj=audiorecorder(DEFAULT_SAMPLE_RATE, DEFAULT_DATA_SIZE, 1)
+disp('Beginning the recording');
+
+while 1
+recordblocking(recobj, DR)
+y=getaudiodata(recobj);
+subplot(2, 1, 1);
+plot(y);
+subplot(2, 1, 2);
+delta=2*pi;
+delta=delta/length(y);
+x=(0:delta:2*pi)
+x=x(1:1:end-1);
+z=sin(x.*500);
+out=z'.*y.*2;
+plot(out);
+end

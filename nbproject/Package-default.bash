@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/GIT.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=GIT.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=git/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/DSPIC_Project.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=DSPIC_Project.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=dspicproject/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/git/bin
+makeDirectory ${TMPDIR}/dspicproject/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/git.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/dspicproject.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/git.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/dspicproject.tar *
 checkReturnCode
 
 # Cleanup

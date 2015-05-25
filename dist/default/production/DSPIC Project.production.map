@@ -1,26 +1,26 @@
 Microchip Technology Inc, vv1.24 (0)
 
 Tool Name:
-  c:\program files (x86)\microchip\xc16\v1.24\bin\bin\..\bin/elf-ld.exe
+  /opt/microchip/xc16/v1.24/bin/bin/../bin/elf-ld
 
 Command:
   -p33FJ128GP802 \
   -o \
-  dist/default/production/GIT.production.elf \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/.. \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/PIC24E \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../support/PIC24E/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/PIC24F \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../support/PIC24F/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/PIC24H \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../support/PIC24H/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC30F \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../support/dsPIC30F/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC33E \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../support/dsPIC33E/gld \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC33F \
-  -Lc:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../support/dsPIC33F/gld \
+  dist/default/production/DSPIC_Project.production.elf \
+  -L/opt/microchip/xc16/v1.24/bin/bin/.. \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../lib \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../lib/PIC24E \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../support/PIC24E/gld \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../lib/PIC24F \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../support/PIC24F/gld \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../lib/PIC24H \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../support/PIC24H/gld \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC30F \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../support/dsPIC30F/gld \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC33E \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../support/dsPIC33E/gld \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC33F \
+  -L/opt/microchip/xc16/v1.24/bin/bin/../../support/dsPIC33F/gld \
   build/default/production/main.o \
   --defsym=__MPLAB_BUILD=1 \
   -Tp33FJ128GP802.gld.00 \
@@ -35,7 +35,7 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/GIT.production.map \
+  -Map=dist/default/production/DSPIC Project.production.map \
   --report-mem \
   -start-group \
   --library=pic30-elf \
@@ -45,10 +45,10 @@ Command:
 
 Archive member included because of file (symbol)
 
-c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+/opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(crt0_standard.o)
                               (__resetPRI)
-c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
-                              c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o) (__data_init_standard)
+/opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(data_init_standard.o)
+                              /opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(crt0_standard.o) (__data_init_standard)
 
 
 Selected CodeGuard Options:
@@ -109,8 +109,8 @@ External Symbols in Program Memory (by address):
 
                   0x000200                  __resetPRI
                   0x00022c                  __psv_init
-                  0x00023c                  __data_init_standard
                   0x00023c                  __data_init
+                  0x00023c                  __data_init_standard
                   0x00029a                  __DefaultInterrupt
                   0x00029e                  _main
                   0x0002b0                  _setup
@@ -158,8 +158,8 @@ Linker script and memory map
 
 LOAD build/default/production/main.o
                     0x0001                  __MPLAB_BUILD = 0x1
-LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC33F\libp33FJ128GP802-elf.a
-LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libfx-elf.a
+LOAD /opt/microchip/xc16/v1.24/bin/bin/../../lib/dsPIC33F/libp33FJ128GP802-elf.a
+LOAD /opt/microchip/xc16/v1.24/bin/bin/../../lib/libfx-elf.a
                     0xf80000                  __FBS = 0xf80000
                     0xf80002                  __FSS = 0xf80002
                     0xf80004                  __FGS = 0xf80004
@@ -190,13 +190,13 @@ LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libfx-elf.a
 
 .text             0x000200         0x9e
  *(.init)
- .init            0x000200         0x3c c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
-                  0x000200                  __resetPRI
+ .init            0x000200         0x3c /opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(crt0_standard.o)
                   0x000200                  __reset
+                  0x000200                  __resetPRI
                   0x00022c                  __psv_init
- .init            0x00023c         0x5e c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
-                  0x00023c                  __data_init_standard
+ .init            0x00023c         0x5e /opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(data_init_standard.o)
                   0x00023c                  __data_init
+                  0x00023c                  __data_init_standard
  *(.user_init)
  *(.handle)
  *(.isr*)
@@ -255,18 +255,18 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000        0xc5e
+.debug_info       0x000000        0xc65
  *(.debug_info)
- .debug_info      0x000000        0xc5e build/default/production/main.o
+ .debug_info      0x000000        0xc65 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000         0xfa
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xfa build/default/production/main.o
 
-.debug_line       0x000000        0x162
+.debug_line       0x000000        0x150
  *(.debug_line)
- .debug_line      0x000000        0x162 build/default/production/main.o
+ .debug_line      0x000000        0x150 build/default/production/main.o
 
 .debug_frame      0x000000         0x34
  *(.debug_frame)
@@ -1517,11 +1517,11 @@ __FUID3
                     0x0230                  UART2 = 0x230
                     0x0230                  _UART2 = 0x230
 START GROUP
-LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a
-LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libm-elf.a
-LOAD c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libc-elf.a
+LOAD /opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a
+LOAD /opt/microchip/xc16/v1.24/bin/bin/../../lib/libm-elf.a
+LOAD /opt/microchip/xc16/v1.24/bin/bin/../../lib/libc-elf.a
 END GROUP
-OUTPUT(dist/default/production/GIT.production.elf elf32-pic30)
+OUTPUT(dist/default/production/DSPIC_Project.production.elf elf32-pic30)
 LOAD FGS
 LOAD FSS
 LOAD FBS
@@ -1538,9 +1538,9 @@ __c30_signature
  __c30_signature
                   0x00011f          0x6 build/default/production/main.o
  __c30_signature
-                  0x000125          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(crt0_standard.o)
+                  0x000125          0x6 /opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x00012b          0x6 c:/program files (x86)/microchip/xc16/v1.24/bin/bin/../../lib\libpic30-elf.a(data_init_standard.o)
+                  0x00012b          0x6 /opt/microchip/xc16/v1.24/bin/bin/../../lib/libpic30-elf.a(data_init_standard.o)
 
 .nbss               0x0800          0x2
  .nbss              0x0800          0x2 build/default/production/main.o

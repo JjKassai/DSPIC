@@ -18,9 +18,9 @@
 //CONSTANT DECLARATION
 #define FCY 33333333
 #define increment 10
-#define ADCGAIN 30 
+#define ADCGAIN 40 
 #define OFFSET 0x0000
-#define SAMPLE_SIZE 10000
+#define SAMPLE_SIZE 5000
 #define MAX_ADC 2^10
 #define MAX_DAC 2^12
 
@@ -28,7 +28,7 @@
 //VARIABLE DECLARATION
 unsigned int i=0;
 signed int input, output;
-//unsigned int min_in, max_in, time;
+unsigned int min_in, max_in, time;
 float int1;
 
 //PROTOTYPES
@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
         //T1CONbits.TON=1;           //Turn on the timer
         for(i=0;i<SAMPLE_SIZE;i++)
         { 
-            while(!AD1CON1bits.DONE);  
+            while(!AD1CON1bits.DONE);   //54112 sps roughly
             AD1CON1bits.DONE=0;         //Manually clear this bit, otherwise hardware won't do so until the next conversion so you'll continue to test true throughout sampling
             input=ADC1BUF0;
             int1=input*(lookup[i]*ADCGAIN);

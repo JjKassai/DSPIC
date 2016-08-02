@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>DSPIC Function Gen</name>
+            <name>DSPIC Voice Changer</name>
             <creation-uuid>1bbeee39-ee65-4f65-a51e-344e8b338006</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

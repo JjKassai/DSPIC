@@ -8,6 +8,7 @@
 //INCLUDE FILES
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <libpic30.h>
 #include <math.h>
 #include "config_bits.h"
@@ -26,15 +27,15 @@
 
 
 //VARIABLE DECLARATION
-unsigned int i=0;
-signed int input, output;
-unsigned int min_in, max_in, time;
+int8_t i=0;
+int16_t input, output;
+uint16_t min_in, max_in, time;
 float int1;
 
 //PROTOTYPES
 void setup(void);
 
-int main(int argc, char** argv) {
+int8_t main(int8_t argc, char** argv) {
     setup();
     while(1)
     {

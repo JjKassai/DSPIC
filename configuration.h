@@ -83,7 +83,7 @@ void setup(void)
     AD1CON1bits.FORM=0b01;              // Signed Integer ouput format for math purposes
     AD1CON1bits.SSRC=0b111;             // Auto-convert
     AD1CON1bits.ASAM=1;                 // Auto Sample
-    AD1CON3bits.ADRC=1;                 // Try the RC cloc,
+    AD1CON3bits.ADRC=1;                 // Try the RC clock
 //    AD1CON3bits.ADCS=0b00111111;      // Divide system clock by 64 to get ADC
     AD1CON3bits.SAMC=0b11111;           // Auto Sample Time = 31 TAD
     AD1CHS0bits.CH0SB=0b00000;          // Channel 0 pos input is AN0

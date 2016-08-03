@@ -1,23 +1,13 @@
-/* 
- * File:   config_bits.h
- * Author: root
- *
- * Created on May 25, 2015, 5:49 PM
- */
+#ifndef CONFIGURATION_H
+#define	CONFIGURATION_H
 
-#ifndef CONFIG_BITS_H
-#define	CONFIG_BITS_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-// DSPIC33FJ128GP802 Configuration Bit Settings
-
-// 'C' source line config statements
 
 #include <xc.h>
 
+
+
+// DSPIC33FJ128GP802 Configuration Bit Settings
 // FBS
 #pragma config BWRP = WRPROTECT_OFF     // Boot Segment Write Protect (Boot Segment may be written)
 #pragma config BSS = NO_FLASH           // Boot Segment Program Flash Code Protection (No Boot program Flash segment)
@@ -57,9 +47,5 @@ extern "C" {
 #pragma config JTAGEN = OFF             // JTAG Port Enable (JTAG is Disabled)
 
 
-#ifdef	__cplusplus
-}
+
 #endif
-
-#endif	/* CONFIG_BITS_H */
-

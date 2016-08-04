@@ -1,4 +1,6 @@
-#define FCY 33333333                   // Defined in order to use __delay_* macros
+#define FCY 40000000ULL                 // Defined in order to use __delay_* macros
+
+
 
 // INCLUDES
 #include <stdio.h>
@@ -20,11 +22,14 @@
 
 
 // GLOBAL VARIABLE DECLARATION
+int16_t dacOutputRight, dacOutputLeft;
+uint8_t sawtoothFlag, echoFlag;
 
 
 
 // FUNCTION DECLARATIONS
-void sawtooth(uint32_t numberOfCycles);
+void sawtooth(void);
+void echo(void);
 
 
 
@@ -39,20 +44,49 @@ void main(void) {
   
     while(1)
     {
-        sawtooth(10);
+        sawtooth();
     }
 }
 
-void sawtooth(uint32_t numberOfCycles)
+void sawtooth(void)
 {
-    uint32_t i, j;
-    
-    for(j=0; j < numberOfCycles; j++)
+    sawtoothFlag = 1;
+    IFS4bits.DAC1RIF = 0;               // Clear Right Channel Interrupt Flag
+    IFS4bits.DAC1LIF = 0;               // Clear Left Channel Interrupt Flag
+    IEC4bits.DAC1RIE = 1;               // Right Channel Interrupt Enabled
+    IEC4bits.DAC1LIE = 1;               // Left Channel Interrupt Enabled
+}
+
+void echo(void)
+{
+    echoFlag = 1;
+    IFS4bits.DAC1RIF = 0;               // Clear Right Channel Interrupt Flag
+    IFS4bits.DAC1LIF = 0;               // Clear Left Channel Interrupt Flag
+    IEC4bits.DAC1RIE = 1;               // Right Channel Interrupt Enabled
+    IEC4bits.DAC1LIE = 1;               // Left Channel Interrupt Enabled
+}
+
+void __attribute__((interrupt, no_auto_psv))_DAC1RInterrupt(void)
+{
+    IFS4bits.DAC1RIF = 0;                   // Clear Right Channel Interrupt Flag
+    if(sawtoothFlag)
     {
-        for(i=0; i <= MAX_DAC; i++)
-        {
-            DAC1RDAT = i;
-            __delay_us(10);
-        }
+        DAC1RDAT = ++dacOutputRight;
+    }
+    else if(echoFlag)
+    {
+        DAC1RDAT = ADC1BUF0;
+    }
+}
+void __attribute__((interrupt, no_auto_psv))_DAC1LInterrupt(void)
+{
+    IFS4bits.DAC1LIF = 0;                   // Clear Left Channel Interrupt Flag
+    if(sawtoothFlag)
+    {
+        DAC1LDAT = ++dacOutputLeft;
+    }
+    else if(echoFlag)
+    {
+        DAC1LDAT = ADC1BUF0;
     }
 }

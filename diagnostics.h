@@ -18,4 +18,3 @@ inline void stopTimer(void);
 
 
 #endif
-

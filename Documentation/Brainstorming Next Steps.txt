@@ -4,3 +4,6 @@ Increase the A/D resolution, only need one channel
 
 Change the audio pre-amp to make better use of the A/D resolution; or use an external voltage reference for A/D
 
+whistling from about 6 inches away on prototype breadboard yields about ~275mV pk-pk
+
+ 

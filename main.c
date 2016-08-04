@@ -1,3 +1,5 @@
+#define FCY 33333333                   // Defined in order to use __delay_* macros
+
 // INCLUDES
 #include <stdio.h>
 #include <stdlib.h>                     // Used for rand()
@@ -12,7 +14,6 @@
 
 
 // CONSTANT DECLARATION
-#define FCY 33333333                    // Defined in order to use __delay_* macros
 #define ADCGAIN 40                      // Software gain for the ADC.  Eventually this should be removed
 #define SAMPLE_SIZE 5000                // Sample size for discrete time modulation
 
@@ -23,6 +24,7 @@
 
 
 // FUNCTION DECLARATIONS
+void sawtooth(uint32_t numberOfCycles);
 
 
 
@@ -46,6 +48,20 @@ void main(void) {
             output=(signed int) intermediate_float;
             DAC1RDAT=output;
         } */
-        sawtooth(1);
+        sawtooth(10);
+    }
+}
+
+void sawtooth(uint32_t numberOfCycles)
+{
+    uint32_t i, j;
+    
+    for(j=0; j < numberOfCycles; j++)
+    {
+        for(i=0; i <= MAX_DAC; i++)
+        {
+            DAC1RDAT = i;
+            __delay_us(10);
+        }
     }
 }

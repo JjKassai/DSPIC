@@ -12,8 +12,6 @@
 
 
 
-void sawtooth(uint32_t numberOfCycles); // Sawtooth generator
-
 inline void startTimer(void);
 inline void stopTimer(void);
 

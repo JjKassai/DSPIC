@@ -7,7 +7,7 @@
 #include "configuration.h"              // Configuration bits and setup functions
 #include "diagnostics.h"                // Diagnostic functions
 //#include "lookups.h"                    // Lookup tables for audio manipulation
-#include "interrupts.h"
+#include "interrupts.h"                 // Interrupt service routines
 
 
 
@@ -26,6 +26,7 @@ uint8_t sawtoothFlag = 0;
 uint8_t echoFlag = 0;
 
 
+
 // FUNCTION DECLARATIONS
 void sawtooth(void);
 void echo(void);
@@ -33,16 +34,21 @@ void echo(void);
 
 
 // FUNCTION DEFINITIONS
-void main(void) {
+int main(void) {
 
     setup();
+    
+    setupUART(9600);
+    
+    printf("Testing the UART");
   
     sawtooth();
     
     while(1)
     {
-        DIAG_LED = 1;
+        DIAG_LED = AD1CON1bits.DONE;
     }
+    return(EXIT_SUCCESS);
 }
 
 void sawtooth(void)

@@ -25,8 +25,17 @@ void __attribute__((interrupt, no_auto_psv))_DAC1LInterrupt(void)
     }
 }
 
-void __attribute__((__interrupt__, no_auto_psv)) _T1Interrupt(void)
+void __attribute__((interrupt, no_auto_psv)) _T1Interrupt(void)
 {
     
     IFS0bits.T1IF = 0; // Clear Timer1 Interrupt Flag}
+}
+
+void __attribute__((interrupt, no_auto_psv)) _U1RXInterrupt(void)
+{
+    IFS0bits.U1RXIF = 0;                    // Clear TX Interrupt flag
+    if(U1RXREG == 'x')
+    {
+        DIAG_LED = !DIAG_LED;
+    }
 }

@@ -7,6 +7,8 @@
       <itemPath>diagnostics.h</itemPath>
       <itemPath>lookups.h</itemPath>
       <itemPath>configuration.h</itemPath>
+      <itemPath>interrupts.h</itemPath>
+      <itemPath>global.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +20,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>diagnostics.c</itemPath>
       <itemPath>configuration.c</itemPath>
+      <itemPath>interrupts.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -36,7 +39,7 @@
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC16</languageToolchain>
         <languageToolchainVersion>1.26</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <compileType>
         <linkerTool>

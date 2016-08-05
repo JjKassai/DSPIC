@@ -1,30 +1,29 @@
-#define FCY 40000000ULL                 // Defined in order to use __delay_* macros
-
-
-
 // INCLUDES
+#include "global.h"
 #include <stdio.h>
 #include <stdlib.h>                     // Used for rand()
-#include <stdint.h>                     // Standard width types
 #include <libpic30.h>                   // Delay functions
 #include <math.h>                       // Trigonometric functions
-#include <xc.h>                         // Microchip register defines and so on
 #include "configuration.h"              // Configuration bits and setup functions
 #include "diagnostics.h"                // Diagnostic functions
-#include "lookups.h"                    // Lookup tables for audio manipulation
+//#include "lookups.h"                    // Lookup tables for audio manipulation
+#include "interrupts.h"
 
 
 
-// CONSTANT DECLARATION
-#define ADCGAIN 40                      // Software gain for the ADC.  Eventually this should be removed
-#define SAMPLE_SIZE 5000                // Sample size for discrete time modulation
+// GLOBAL CONSTANT DEFINITION
+const int16_t const_maxAdcCounts = 2^12;
+const int16_t const_maxDacCounts = 2^16;
+const uint16_t const_adcGain = 40;
 
 
 
-// GLOBAL VARIABLE DECLARATION
-int16_t dacOutputRight, dacOutputLeft;
-uint8_t sawtoothFlag, echoFlag;
-
+// GLOBAL VARIABLE DEFINITION
+volatile int16_t dacOutputRight = 0;
+volatile int16_t dacOutputLeft = 0;
+volatile int16_t adcRawInput = 0;
+uint8_t sawtoothFlag = 0;
+uint8_t echoFlag = 0;
 
 
 // FUNCTION DECLARATIONS
@@ -35,16 +34,14 @@ void echo(void);
 
 // FUNCTION DEFINITIONS
 void main(void) {
-    
-    uint16_t    i;                     // index variable for looping
-    int16_t     input, output;
-    float       intermediate_float;
-    
+
     setup();
   
+    sawtooth();
+    
     while(1)
     {
-        sawtooth();
+        DIAG_LED = 1;
     }
 }
 
@@ -64,29 +61,4 @@ void echo(void)
     IFS4bits.DAC1LIF = 0;               // Clear Left Channel Interrupt Flag
     IEC4bits.DAC1RIE = 1;               // Right Channel Interrupt Enabled
     IEC4bits.DAC1LIE = 1;               // Left Channel Interrupt Enabled
-}
-
-void __attribute__((interrupt, no_auto_psv))_DAC1RInterrupt(void)
-{
-    IFS4bits.DAC1RIF = 0;                   // Clear Right Channel Interrupt Flag
-    if(sawtoothFlag)
-    {
-        DAC1RDAT = ++dacOutputRight;
-    }
-    else if(echoFlag)
-    {
-        DAC1RDAT = ADC1BUF0;
-    }
-}
-void __attribute__((interrupt, no_auto_psv))_DAC1LInterrupt(void)
-{
-    IFS4bits.DAC1LIF = 0;                   // Clear Left Channel Interrupt Flag
-    if(sawtoothFlag)
-    {
-        DAC1LDAT = ++dacOutputLeft;
-    }
-    else if(echoFlag)
-    {
-        DAC1LDAT = ADC1BUF0;
-    }
 }

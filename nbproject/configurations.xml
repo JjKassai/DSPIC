@@ -4,11 +4,11 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>diagnostics.h</itemPath>
-      <itemPath>lookups.h</itemPath>
-      <itemPath>configuration.h</itemPath>
-      <itemPath>interrupts.h</itemPath>
-      <itemPath>global.h</itemPath>
+      <itemPath>src/configuration.h</itemPath>
+      <itemPath>src/diagnostics.h</itemPath>
+      <itemPath>src/global.h</itemPath>
+      <itemPath>src/interrupts.h</itemPath>
+      <itemPath>src/lookups.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -17,10 +17,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>main.c</itemPath>
-      <itemPath>diagnostics.c</itemPath>
-      <itemPath>configuration.c</itemPath>
-      <itemPath>interrupts.c</itemPath>
+      <itemPath>src/configuration.c</itemPath>
+      <itemPath>src/diagnostics.c</itemPath>
+      <itemPath>src/interrupts.c</itemPath>
+      <itemPath>src/main.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -28,6 +28,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>src</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

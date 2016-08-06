@@ -14,7 +14,7 @@
 // GLOBAL CONSTANT DEFINITION
 const int16_t const_maxAdcCounts = 0b111111111111;
 const int16_t const_maxDacCounts = 0xFFFF;
-const uint16_t const_adcGain = 40;
+const uint16_t const_adcGain = 10;
 
 
 
@@ -37,11 +37,11 @@ int main(void) {
     
     startTimer();
     
-    sawtooth();
+    echo();
     
     while(1)
     {
-        DAC1RDAT = dacOutputRight;
+        DAC1RDAT = dacOutputRight * const_adcGain;
         if(TMR1>=32768)
         {
             DIAG_LED = 1;

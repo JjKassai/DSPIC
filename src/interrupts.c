@@ -6,7 +6,7 @@ void __attribute__((interrupt, no_auto_psv))_DAC1RInterrupt(void)
 {
     if(sawtoothFlag)
     {
-        dacOutputRight += 1000;
+        dacOutputRight += 100;
     }
     else if(echoFlag)
     {

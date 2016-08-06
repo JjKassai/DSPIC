@@ -6,11 +6,11 @@ void __attribute__((interrupt, no_auto_psv))_DAC1RInterrupt(void)
 {
     if(sawtoothFlag)
     {
-        DAC1RDAT = ++dacOutputRight;
+        dacOutputRight += 1000;
     }
     else if(echoFlag)
     {
-        DAC1RDAT = ADC1BUF0;
+        dacOutputRight = ADC1BUF0;
     }
     IFS4bits.DAC1RIF = 0;                   // Clear Right Channel Interrupt Flag
 }
@@ -19,11 +19,11 @@ void __attribute__((interrupt, no_auto_psv))_DAC1LInterrupt(void)
 {
     if(sawtoothFlag)
     {
-        DAC1LDAT = ++dacOutputLeft;
+        dacOutputLeft += 1000;
     }
     else if(echoFlag)
     {
-        DAC1LDAT = ADC1BUF0;
+        dacOutputLeft = ADC1BUF0;
     }
     IFS4bits.DAC1LIF = 0;                   // Clear Left Channel Interrupt Flag
 }

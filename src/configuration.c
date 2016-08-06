@@ -52,6 +52,8 @@ void setup(void)
     setupDAC();
     
     setupADC();
+    
+    setupTimer1();
 }
 
 void setupClock(void)
@@ -72,7 +74,7 @@ void setupTimer1(void)
     T1CONbits.TCS = 0;                  // Use Fosc as clock input
     T1CONbits.TCKPS = 0;                // 1:1 Prescaler
     TMR1 = 0;                           // Clear the timer register
-    PR1 = 2^16;                            // Load the period value (?)
+//    PR1 = 65536;                        // Load the period value (?)
     
     IPC0bits.T1IP = 1;                  // Timer 1 Interrupt Priority 1
     IFS0bits.T1IF = 0;                  // Clear the interrupt flag

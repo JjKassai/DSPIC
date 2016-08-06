@@ -12,8 +12,8 @@
 
 
 // GLOBAL CONSTANT DEFINITION
-const int16_t const_maxAdcCounts = 2^12;
-const int16_t const_maxDacCounts = 2^16;
+const int16_t const_maxAdcCounts = 4096;
+const int16_t const_maxDacCounts = 65536;
 const uint16_t const_adcGain = 40;
 
 
@@ -38,15 +38,18 @@ int main(void) {
 
     setup();
     
-    setupUART(9600);
-    
-    printf("Testing the UART");
-  
-    sawtooth();
+    startTimer();
     
     while(1)
     {
-        DIAG_LED = AD1CON1bits.DONE;
+        if(TMR1>=32768)
+        {
+            DIAG_LED = 1;
+        }
+        else
+        {
+            DIAG_LED = 0;
+        }
     }
     return(EXIT_SUCCESS);
 }

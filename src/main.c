@@ -19,11 +19,8 @@ const uint16_t const_adcGain = 40;
 
 
 // GLOBAL VARIABLE DEFINITION
-volatile int16_t dacOutputRight = 0;
-volatile int16_t dacOutputLeft = 0;
-volatile int16_t adcRawInput = 0;
-uint8_t sawtoothFlag = 0;
-uint8_t echoFlag = 0;
+volatile int16_t dacOutputRight, dacOutputLeft, adcRawInput;
+uint8_t sawtoothFlag, echoFlag, diagFlag;
 
 
 

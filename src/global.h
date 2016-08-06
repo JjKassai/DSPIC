@@ -18,7 +18,7 @@ extern const uint16_t const_adcGain;
 
 
 extern volatile int16_t dacOutputRight, dacOutputLeft, adcRawInput;
-extern uint8_t sawtoothFlag, echoFlag;
+extern uint8_t sawtoothFlag, echoFlag, diagFlag;
 
  
 

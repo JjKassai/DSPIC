@@ -65,7 +65,7 @@ void setupClock(void)
     CLKDIVbits.PLLPOST=0b0;             // N2 = 2
     PLLFBDbits.PLLDIV=0b100110;         // M = 40
     ACLKCONbits.SELACLK=0;              // Fosc (PLL Output) provides AUX CLK
-    ACLKCONbits.APSTSCLR=0;             // Aux CLK divide by 256
+    ACLKCONbits.APSTSCLR=0b111;         // Aux CLK divide by 1
 }
 
 void setupTimer1(void)

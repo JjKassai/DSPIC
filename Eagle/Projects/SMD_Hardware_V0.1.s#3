@@ -12771,12 +12771,12 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="R3" library="resistor" deviceset="R-US_" device="R0603" value="100k"/>
 <part name="R4" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="R5" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
-<part name="R6" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R7" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R8" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R9" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R10" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R11" library="resistor" deviceset="R-US_" device="R0603"/>
+<part name="R6" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
+<part name="R7" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
+<part name="R8" library="resistor" deviceset="R-US_" device="R0603" value="Rheostat"/>
+<part name="R9" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
+<part name="R10" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
+<part name="R11" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="C4" library="resistor" deviceset="CPOL-US" device="140CLH-0810" value=".1uF 400V"/>
 <part name="BAT1" library="con-molex" deviceset="22-23-2021" device="" value=""/>
 <part name="C3" library="resistor" deviceset="C-EU" device="C0603"/>

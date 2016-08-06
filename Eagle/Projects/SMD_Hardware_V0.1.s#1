@@ -12844,9 +12844,9 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="C6" library="resistor" deviceset="C-US" device="C0805"/>
 <part name="C7" library="resistor" deviceset="C-EU" device="C0805"/>
 <part name="C8" library="resistor" deviceset="C-EU" device="C0805"/>
-<part name="C9" library="resistor" deviceset="C-EU" device="C0805"/>
-<part name="R13" library="resistor" deviceset="R-US_" device="R0603"/>
-<part name="R14" library="resistor" deviceset="R-US_" device="R0603"/>
+<part name="C9" library="resistor" deviceset="C-EU" device="C0805" value="DNI"/>
+<part name="R13" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
+<part name="R14" library="resistor" deviceset="R-US_" device="R0603" value="0 (short)"/>
 <part name="SUPPLY1" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY2" library="supply2" deviceset="GND" device=""/>
 <part name="R15" library="resistor" deviceset="R-US_" device="R0603" value="1k"/>
@@ -13267,6 +13267,26 @@ on the breadboard
 <wire x1="149.86" y1="40.64" x2="149.86" y2="45.72" width="0.1524" layer="91"/>
 <pinref part="U$1" gate="A" pin="OSC2/CLKO/CN29/PMA0/RA3"/>
 <wire x1="149.86" y1="45.72" x2="142.24" y2="45.72" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="U$1" gate="A" pin="PGEC1/_AN3/C2IN+/RP1/CN5/RB1"/>
+<wire x1="142.24" y1="43.18" x2="147.32" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="43.18" x2="147.32" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="53.34" x2="152.4" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="53.34" x2="152.4" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="152.4" y1="68.58" x2="165.1" y2="68.58" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$27" class="0">
+<segment>
+<pinref part="U$1" gate="A" pin="PGED1/AN2/C2IN-/RP0/CN4/RB0"/>
+<wire x1="142.24" y1="35.56" x2="144.78" y2="35.56" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="35.56" x2="144.78" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="50.8" x2="154.94" y2="50.8" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="50.8" x2="154.94" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="66.04" x2="165.1" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

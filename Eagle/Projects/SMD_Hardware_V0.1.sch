@@ -12830,13 +12830,13 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="R5" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="R6" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="R7" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
-<part name="R8" library="resistor" deviceset="R-US_" device="R0603" value="Rheostat"/>
+<part name="R8" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="R9" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="R10" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="R11" library="resistor" deviceset="R-US_" device="R0603" value="10k"/>
 <part name="C4" library="resistor" deviceset="CPOL-US" device="140CLH-0810" value=".1uF 400V"/>
 <part name="BAT1" library="con-molex" deviceset="22-23-2021" device="" value=""/>
-<part name="C3" library="resistor" deviceset="C-EU" device="C0603"/>
+<part name="C3" library="resistor" deviceset="C-EU" device="C0603" value=".05uF"/>
 <part name="C5" library="resistor" deviceset="CPOL-US" device="140CLH-0810" value="220uF 25V"/>
 <part name="R12" library="resistor" deviceset="R-US_" device="R0603" value="10"/>
 <part name="VOL" library="con-amp" deviceset="MTA03-100" device=""/>
@@ -12856,6 +12856,7 @@ In this library the device names are the same as the pin names of the symbols, t
 <part name="C11" library="resistor" deviceset="C-US" device="025-024X044" value="10pF"/>
 <part name="SUPPLY3" library="supply2" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="supply2" deviceset="GND" device=""/>
+<part name="C12" library="resistor" deviceset="C-EU" device="C0603" value="10uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -12908,6 +12909,7 @@ on the breadboard
 <instance part="C11" gate="G$1" x="152.4" y="38.1"/>
 <instance part="SUPPLY3" gate="GND" x="152.4" y="30.48"/>
 <instance part="SUPPLY4" gate="GND" x="167.64" y="30.48"/>
+<instance part="C12" gate="G$1" x="119.38" y="68.58" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -12950,9 +12952,10 @@ on the breadboard
 <pinref part="R11" gate="G$1" pin="1"/>
 <wire x1="91.44" y1="63.5" x2="91.44" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="91.44" y1="60.96" x2="106.68" y2="60.96" width="0.1524" layer="91"/>
-<wire x1="106.68" y1="60.96" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="106.68" y1="60.96" x2="119.38" y2="60.96" width="0.1524" layer="91"/>
 <junction x="106.68" y="60.96"/>
 <pinref part="R12" gate="G$1" pin="1"/>
+<wire x1="119.38" y1="60.96" x2="132.08" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="132.08" y1="60.96" x2="132.08" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="SPK1" gate="G$1" pin="2"/>
 <wire x1="147.32" y1="81.28" x2="144.78" y2="81.28" width="0.1524" layer="91"/>
@@ -12961,6 +12964,12 @@ on the breadboard
 <junction x="132.08" y="60.96"/>
 <pinref part="SUPPLY2" gate="GND" pin="GND"/>
 <junction x="144.78" y="60.96"/>
+<pinref part="C12" gate="G$1" pin="2"/>
+<wire x1="119.38" y1="76.2" x2="119.38" y2="73.66" width="0.1524" layer="91"/>
+<junction x="119.38" y="76.2"/>
+<pinref part="C12" gate="G$1" pin="1"/>
+<wire x1="119.38" y1="66.04" x2="119.38" y2="60.96" width="0.1524" layer="91"/>
+<junction x="119.38" y="60.96"/>
 </segment>
 <segment>
 <pinref part="BAT1" gate="-1" pin="S"/>

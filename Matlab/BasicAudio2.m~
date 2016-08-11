@@ -7,8 +7,8 @@ DEFAULT_SAMPLE_RATE = 40000
 DEFAULT_DATA_SIZE = 16
 DEFAULT_RECORD_LENGTH = 4
 DEFAULT_GAIN = 4
-MIX_FREQUENCY_1 = 700
-MIX_FREQUENCY_2 = 100
+MIX_FREQUENCY_1 = 500       
+MIX_FREQUENCY_2 = 300
 
 
 recobj=audiorecorder(DEFAULT_SAMPLE_RATE, DEFAULT_DATA_SIZE, 1)
@@ -30,9 +30,10 @@ delta=2*pi;
 delta=delta/length(y);
 x=(0:delta:2*pi);
 x=x(1:1:end-1);
-z=sin(x.*MIX_FREQUENCY_1);
-z2=sin(x.*MIX_FREQUENCY_2);
-out=z'.*z2'.*y.*DEFAULT_GAIN;
+z=cos(x.*MIX_FREQUENCY_1);
+z2=cos(x.*MIX_FREQUENCY_2);
+z3=(z.*z2);
+out=(z3').*DEFAULT_GAIN.*y;
 plot(out);
 
 disp('Playing');
